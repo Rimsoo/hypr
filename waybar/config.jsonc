@@ -9,25 +9,27 @@
   // Choose the order of the modules
   "modules-left": [
     "hyprland/workspaces",
-    "hyprland/mode",
-    "hyprland/scratchpad",
+    // "hyprland/scratchpad",
+    // "hyprland/submap",
     "custom/media",
   ],
   "modules-center": ["hyprland/window"],
   "modules-right": [
-    "mpd",
+    // "mpd",
     "idle_inhibitor",
     "pulseaudio",
+    // "pulseaudio/slider",
     "network",
-    "power-profiles-daemon",
+    // "power-profiles-daemon",
     "cpu",
+    "custom/nvidia",
     "memory",
     "temperature",
-    "backlight",
-    "keyboard-state",
+    // "backlight",
+    // "keyboard-state",
     "hyprland/language",
-    "battery",
-    "battery#bat2",
+    // "battery",
+    // "battery#bat2",
     "clock",
     "tray",
     "custom/power",
@@ -58,7 +60,7 @@
       "unlocked": "",
     },
   },
-  "hyprland/mode": {
+  "hyprland/submap": {
     "format": "<span style=\"italic\">{}</span>",
   },
   "hyprland/scratchpad": {
@@ -191,8 +193,13 @@
     },
     "on-click": "pavucontrol",
   },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal",
+  },
   "custom/media": {
-    "format": "{icon} {text}",
+    "format": "{text}",
     "return-type": "json",
     "max-length": 40,
     "format-icons": {
@@ -200,19 +207,24 @@
       "default": "🎜",
     },
     "escape": true,
-    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
+    "exec": "$HOME/.config/hypr/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
     // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
   },
   "custom/power": {
-    "format": "⏻ ",
+    "format": " ⏻ ",
     "tooltip": false,
     "menu": "on-click",
-    "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+    "menu-file": "$HOME/.config/hypr/waybar/power_menu.xml", // Menu file in resources folder
     "menu-actions": {
       "shutdown": "shutdown",
       "reboot": "reboot",
       "suspend": "systemctl suspend",
       "hibernate": "systemctl hibernate",
     },
+  },
+  "custom/nvidia": {
+    "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1% 🌡️\\2°C/g'",
+    "format": "{} 🖥️",
+    "interval": 2,
   },
 }
