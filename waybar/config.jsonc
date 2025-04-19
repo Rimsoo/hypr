@@ -11,6 +11,7 @@
     "hyprland/workspaces",
     // "hyprland/scratchpad",
     // "hyprland/submap",
+    // "custom/test",
     "custom/media",
   ],
   "modules-center": ["hyprland/window"],
@@ -115,6 +116,7 @@
     // "timezone": "America/New_York",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%Y-%m-%d}",
+    "format": "{:%d %h %H:%M}",
   },
   "cpu": {
     "format": "{usage}% ",
@@ -130,40 +132,6 @@
     // "format-critical": "{temperatureC}°C {icon}",
     "format": "{temperatureC}°C {icon}",
     "format-icons": ["", "", ""],
-  },
-  "backlight": {
-    // "device": "acpi_video1",
-    "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
-  },
-  "battery": {
-    "states": {
-      // "good": 95,
-      "warning": 30,
-      "critical": 15,
-    },
-    "format": "{capacity}% {icon}",
-    "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": ["", "", "", "", ""],
-  },
-  "battery#bat2": {
-    "bat": "BAT2",
-  },
-  "power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": "",
-    },
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -209,6 +177,7 @@
     "escape": true,
     "exec": "$HOME/.config/hypr/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
     // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    "on-click": "playerctl play-pause",
   },
   "custom/power": {
     "format": " ⏻ ",
@@ -219,12 +188,19 @@
       "shutdown": "shutdown",
       "reboot": "reboot",
       "suspend": "systemctl suspend",
-      "hibernate": "systemctl hibernate",
+      "hibernate": "hyprctl dispatch exit",
     },
   },
   "custom/nvidia": {
     "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1% 🌡️\\2°C/g'",
     "format": "{} 🖥️",
     "interval": 2,
+  },
+  "custom/test": {
+    "format": "{}",
+    "tooltip": false,
+    "exec": "echo TEST",
+    "rotate": 30,
+    "on-click": "echo CLICK",
   },
 }
