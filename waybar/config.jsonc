@@ -3,29 +3,25 @@
   "reload_style_on_change": true,
   // "layer": "top", // Waybar at top layer
   // "position": "bottom", // Waybar position (top|bottom|left|right)
-  "height": 30, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
-  "spacing": 4, // Gaps between modules (4px)
+  "spacing": 5, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": [
     "hyprland/workspaces",
+    "hyprland/submap",
     // "hyprland/scratchpad",
-    // "hyprland/submap",
     // "custom/test",
     "custom/media",
   ],
   "modules-center": ["hyprland/window"],
   "modules-right": [
     // "mpd",
-    "idle_inhibitor",
-    "pulseaudio",
+    // "idle_inhibitor",
     // "pulseaudio/slider",
-    "network",
     // "power-profiles-daemon",
-    "cpu",
-    "custom/nvidia",
-    "memory",
-    "temperature",
+    "group/stats",
+    // "temperature",
+    "pulseaudio",
     // "backlight",
     // "keyboard-state",
     "hyprland/language",
@@ -33,14 +29,45 @@
     // "battery#bat2",
     "clock",
     "tray",
+    // "privacy",
     "custom/power",
   ],
+  "privacy": {
+    "icon-spacing": 4,
+    "icon-size": 16,
+    "modules": [
+      {
+        "type": "audio-in",
+      },
+      {
+        "type": "audio-out",
+      },
+    ],
+  },
+  "group/stats": {
+    "modules": [
+      // Stay !
+      "network",
+      "custom/nvidia",
+      "cpu",
+      "memory",
+    ],
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 250,
+      "transition-left-to-right": false,
+      "click-to-reveal": true,
+      "children-class": "drawer-child",
+    },
+  },
   // Modules configuration
   "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false,
-    "format": "{name}: {icon}",
+    "format": " {icon}",
+    "show-special": true,
+    "special-visible-only": true,
     "format-icons": {
       "1": "",
       "2": "",
@@ -50,6 +77,7 @@
       "urgent": "",
       "focused": "",
       "default": "",
+      "magic": "",
     },
   },
   "keyboard-state": {
@@ -62,7 +90,10 @@
     },
   },
   "hyprland/submap": {
-    "format": "<span style=\"italic\">{}</span>",
+    "format": "[{}]",
+    "always-on": true,
+    "tooltip": false,
+    "default-submap": " ",
   },
   "hyprland/scratchpad": {
     "format": "{icon} {count}",
@@ -104,6 +135,12 @@
       "deactivated": "",
     },
   },
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "US",
+    "format-": "US - Intl",
+    // Add more languages as needed
+  },
   "tray": {
     // "icon-size": 21,
     "spacing": 10,
@@ -115,15 +152,16 @@
   "clock": {
     // "timezone": "America/New_York",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%Y-%m-%d}",
     "format": "{:%d %h %H:%M}",
   },
   "cpu": {
     "format": "{usage}% ",
     "tooltip": false,
+    "on-click": "kitty -e btop",
   },
   "memory": {
     "format": "{}% ",
+    "on-click": "kitty -e btop",
   },
   "temperature": {
     // "thermal-zone": 2,
@@ -140,7 +178,8 @@
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "󰲛",
-    // "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "cursor": 60,
+    // "format-alt": "󰛳",
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
@@ -185,15 +224,15 @@
     "menu": "on-click",
     "menu-file": "$HOME/.config/hypr/waybar/power_menu.xml", // Menu file in resources folder
     "menu-actions": {
-      "shutdown": "shutdown",
+      "shutdown": "shutdown 0",
       "reboot": "reboot",
-      "suspend": "systemctl suspend",
-      "hibernate": "hyprctl dispatch exit",
+      // "suspend": "systemctl suspend",
+      "logout": "hyprctl dispatch exit",
     },
   },
   "custom/nvidia": {
-    "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1% 🌡️\\2°C/g'",
-    "format": "{} 🖥️",
+    "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1% 🖥️\\2°C 🌡️/g'",
+    "format": "{}",
     "interval": 2,
   },
   "custom/test": {

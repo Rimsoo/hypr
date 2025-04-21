@@ -2,22 +2,22 @@
 <interface>
   <object class="GtkMenu" id="menu">
     <child>
-		<object class="GtkMenuItem" id="suspend">
+		<object class="GtkMenuItem" id="logout">
 			<property name="label">Logout</property>
         </object>
 	</child>
-	<child>
-        <object class="GtkMenuItem" id="hibernate">
-			<property name="label">Hibernate</property>
-        </object>
-	</child>
+	<!-- <child> -->
+	<!--        <object class="GtkMenuItem" id="hibernate"> -->
+	<!-- 		<property name="label">Hibernate</property> -->
+	<!--        </object> -->
+	<!-- </child> -->
+    <child>
+      <object class="GtkSeparatorMenuItem" id="delimiter1"/>
+    </child>
     <child>
         <object class="GtkMenuItem" id="shutdown">
 			<property name="label">Shutdown</property>
         </object>
-    </child>
-    <child>
-      <object class="GtkSeparatorMenuItem" id="delimiter1"/>
     </child>
     <child>
 		<object class="GtkMenuItem" id="reboot">
