@@ -9,6 +9,7 @@
   "modules-left": [
     "hyprland/workspaces",
     "hyprland/submap",
+    "custom/wofi",
     // "hyprland/scratchpad",
     // "custom/test",
     "custom/media",
@@ -44,6 +45,18 @@
       },
     ],
   },
+  "hyprland/window": {
+    "separate-outputs": true,
+    // "on-click": "hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 20% 20%",
+  },
+  "custom/wofi": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+    },
+    "tooltip": false,
+    "on-click": "killall wofi || wofi --show drun --location 1",
+  },
   "group/stats": {
     "modules": [
       // Stay !
@@ -68,6 +81,7 @@
     "format": " {icon}",
     "show-special": true,
     "special-visible-only": true,
+    "cursor": 60,
     "format-icons": {
       "1": "",
       "2": "",
@@ -94,13 +108,6 @@
     "always-on": true,
     "tooltip": false,
     "default-submap": " ",
-  },
-  "hyprland/scratchpad": {
-    "format": "{icon} {count}",
-    "show-empty": false,
-    "format-icons": ["", ""],
-    "tooltip": true,
-    "tooltip-format": "{app}: {title}",
   },
   "mpd": {
     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -136,13 +143,15 @@
     },
   },
   "hyprland/language": {
+    "on-click": "hyprctl switchxkblayout current next",
     "format": "{}",
     "format-en": "US",
-    "format-": "US - Intl",
+    "format-en-intl": "US - Intl",
     // Add more languages as needed
   },
   "tray": {
     // "icon-size": 21,
+    "cursor": 60,
     "spacing": 10,
     // "icons": {
     //   "blueman": "bluetooth",
