@@ -88,9 +88,6 @@ button {
 }
 
 /* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-  background-color: #83a598;
-}
 
 #workspaces button {
   padding: 0 5px;
@@ -122,11 +119,11 @@ button {
 }
 
 #clock {
-  background-color: #7ea07c;
+  background-color: #687f70;
 }
 
 #clock:hover {
-  background-color: #8ec07c;
+  background-color: #97a07c;
 }
 
 #battery {
@@ -182,21 +179,21 @@ label:focus {
 }
 
 #cpu {
-  background-color: #fe8028;
+  background-color: #c66829;
   margin-right: 5px;
 }
 
 #cpu:hover {
-  background-color: #d79921;
+  background-color: #fe8028;
 }
 
 #memory {
-  background-color: #cc241d;
+  background-color: #fb4934;
   margin-right: 5px;
 }
 
 #memory:hover {
-  background-color: #fb4934;
+  background-color: #c66829;
   margin-right: 5px;
 }
 
@@ -209,11 +206,11 @@ label:focus {
 }
 
 #network {
-  background-color: #7ea07c;
+  background-color: #687f70;
 }
 
 #network:hover {
-  background-color: #8ec07c;
+  background-color: #8f9880;
 }
 
 #network.disconnected {
@@ -221,7 +218,11 @@ label:focus {
 }
 
 #pulseaudio {
-  background-color: #458588;
+  background-color: #46848c;
+}
+
+#pulseaudio:hover {
+  background-color: #87a1a3;
 }
 
 #pulseaudio.muted {
@@ -238,12 +239,12 @@ label:focus {
 }
 
 #custom-media {
-  background-color: #cc241d;
+  background-color: #fb4934;
   min-width: 100px;
 }
 
 #custom-media:hover {
-  background-color: #fb4934;
+  background-color: #cc241d;
   min-width: 100px;
 }
 
@@ -256,7 +257,7 @@ label:focus {
 }
 
 #temperature {
-  background-color: #f0932b;
+  background-color: #ffa000;
 }
 
 #temperature.critical {
@@ -264,11 +265,11 @@ label:focus {
 }
 
 #tray {
-  background-color: #fe8028;
+  background-color: #c66829;
 }
 
 #tray:hover {
-  background-color: #d79921;
+  background-color: #fe8028;
 }
 
 .active:hover ~ #tray {
@@ -311,12 +312,12 @@ label:focus {
 }
 
 #language {
-  background: #b16286;
+  background: #c66829;
   min-width: 16px;
 }
 
 #language:hover {
-  background: #d3869b;
+  background: #fe8028;
   min-width: 16px;
 }
 
@@ -364,7 +365,7 @@ label:focus {
 }
 
 #custom-nvidia {
-  background-color: #458588;
+  background-color: #46848c;
   min-width: 110px;
   margin-right: 5px;
 }
@@ -377,6 +378,6 @@ label:focus {
 }
 
 #custom-power:hover {
-  background-color: #fb4934;
+  background-color: #282828;
   color: #ebdbb2;
 }

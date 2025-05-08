@@ -76,18 +76,26 @@
   // Modules configuration
   "hyprland/workspaces": {
     "disable-scroll": true,
-    "all-outputs": true,
+    // "all-outputs": true,
     "warp-on-scroll": false,
     "format": " {icon}",
     "show-special": true,
     "special-visible-only": true,
     "cursor": 60,
+    "persistent-workspaces": {
+      "*": 5, // 5 workspaces by default on every monitor
+    },
     "format-icons": {
       "1": "",
       "2": "",
       "3": "",
       "4": "",
       "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "",
+      "0": "",
       "urgent": "",
       "focused": "",
       "default": "",
@@ -144,11 +152,19 @@
   },
   "hyprland/language": {
     "on-click": "hyprctl switchxkblayout current next",
-    "format": "{}",
-    "format-en": "US",
-    "format-en-intl": "US - Intl",
+    // "format": "{}",
+    "format-en": "US ",
+    "format-en-intl": "US - Intl ",
     // Add more languages as needed
   },
+  // "hyprland/language": {
+  //   "format-en": "󰼭   us",
+  //   "format-en-colemak_dh": "   dh",
+  //   // "keyboard-name": "apple-inc.-apple-internal-keyboard-/-trackpad",
+  //   "on-click": "hyprctl switchxkblayout current next",
+  //   "tooltip": false, // tooltips not working with this module
+  //   "tooltip-format": "{}",
+  // },
   "tray": {
     // "icon-size": 21,
     "cursor": 60,
